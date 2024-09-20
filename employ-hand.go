@@ -8,13 +8,10 @@ import (
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type","application/json");
 	var empp Employee;
-	json.NewDecoder(r.Body).Decode(empp);
-	json.NewEncoder(w).Encode(empp);
-	//db.Create(&empp);
+	json.NewDecoder(r.Body).Decode(&empp);
+	json.NewEncoder(w).Encode(&empp);
 	Database.Create(&empp)
-	//fmt.Fprintf(w, "New Employee: %+v", empp)
 	json.NewEncoder(w).Encode(&empp)
-
 
 }
 func GetEmployee(w http.ResponseWriter, r *http.Request) {
